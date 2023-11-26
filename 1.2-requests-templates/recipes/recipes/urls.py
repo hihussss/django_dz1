@@ -15,7 +15,10 @@ Including another URLconf
 """
 
 from django.urls import path
+from calculator.views import get_ingred, home_views
 
 urlpatterns = [
     # здесь зарегистрируйте вашу view-функцию
+    path('', home_views),
+    path('<str:a>/', get_ingred),
 ]

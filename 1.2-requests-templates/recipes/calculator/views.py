@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.urls import path
+from django.http import HttpResponse
 
 DATA = {
     'omlet': {
@@ -18,6 +20,22 @@ DATA = {
     },
     # можете добавить свои рецепты ;)
 }
+
+def home_views(request):
+    return HttpResponse("hello")
+def get_ingred(request,a):
+    temp_recept = 'calculator/index.html'
+    servings = int(request.GET.get('servings', 1))
+    if servings > 1:
+        for i in DATA[a]:
+            DATA[a][i] = round(DATA[a][i]*servings,2)
+
+    context = {
+        "bludo": a,
+        "recipe": DATA[a],
+    }
+    
+    return render(request,temp_recept,context)
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
