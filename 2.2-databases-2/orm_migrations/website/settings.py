@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'school',
+    
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -69,6 +72,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
+INTERNAL_IPS = [
+    '127.0.0.1',
+    '127.0.0.1:8000'
+]
 
 DATABASES = {
     'default': {
@@ -76,6 +83,8 @@ DATABASES = {
         'NAME': 'netology_orm_migrations',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': 'Post191190'
     }
 }
 
