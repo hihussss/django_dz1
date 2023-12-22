@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from logistic.views import StockViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('logistic.urls')),
+    path('stocks/', StockViewSet.as_view({'get': 'list', 'post': 'create'}), name='stock_list'),
 ]
