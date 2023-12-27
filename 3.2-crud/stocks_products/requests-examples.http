@@ -46,7 +46,7 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "мой адрес2 не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "ул.Ленина 25",
   "positions": [
     {
       "product": 2,
@@ -54,7 +54,7 @@ Content-Type: application/json
       "price": 120.50
     },
     {
-      "product": 3,
+      "product": 4,
       "quantity": 100,
       "price": 180
     }
@@ -86,4 +86,10 @@ Content-Type: application/json
 
 # поиск складов, где есть определенный продукт
 GET {{baseUrl}}/stocks/?products=2
+Content-Type: application/json
+
+###
+
+#Поиск по складу
+GET {{baseUrl}}/stocks/?search=Ленин
 Content-Type: application/json
