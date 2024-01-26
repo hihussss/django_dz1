@@ -1,0 +1,64 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# получение объявлений
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+
+###
+
+# создание объявления
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token ee830593c8552c3d5b7c276b0a59a915334f820b
+
+{
+  "title": "Холодильник",
+  "description": "Samsung"
+}
+
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/advertisements/1/
+Content-Type: application/json
+Authorization: Token ee830593c8552c3d5b7c276b0a59a915334f820b
+
+{
+  "status": "CLOSED"
+}
+
+###
+# Удаление объявления
+DELETE {{baseUrl}}/advertisements/1/
+Content-Type: application/json
+Authorization: Token ee811d632b408081656cf2752874ac11ca0459b6
+
+###
+
+
+
+# Посмотреть интересующее нас объявление
+GET {{baseUrl}}/advertisements/1/
+Content-Type: application/json
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/advertisements/?creator=1
+Content-Type: application/json
+Authorization: Token ee830593c8552c3d5b7c276b0a59a915334f820b
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/advertisements/?created_at_before=2025-10-01
+Content-Type: application/json
+Authorization: Token ee830593c8552c3d5b7c276b0a59a915334f820b
+
+###
+
+# фильтрация по статусу
+GET {{baseUrl}}/advertisements/?status=OPEN
+Content-Type: application/json
+Authorization: Token ee830593c8552c3d5b7c276b0a59a915334f820b
