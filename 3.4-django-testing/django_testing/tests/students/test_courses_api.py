@@ -23,8 +23,7 @@ def student_factory():
     return factory
 
 
-def test_example():
-    assert True, "Just test example"
+
 
 
 # Проверка получения первого курса (retrieve-логика)
