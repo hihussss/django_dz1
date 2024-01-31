@@ -7,17 +7,17 @@ from advertisements.models import Advertisement, AdvertisementStatusChoices
 
 class DateFilter(filters.FilterSet):
     """Фильтры для объявлений."""
-    date = filters.DateFromToRangeFilter()
+    date = filters.DateFromToRangeFilter(field_name="created_at")
     
-
+    
     
     class Meta:
         model = Advertisement
-        fields = ['creator', 'date' ]
+        fields = ['creator', 'date']
 
 class StatusFilter(filters.FilterSet):
     choise = filters.ChoiceFilter(field_name='status', choices=AdvertisementStatusChoices) 
 
     class Meta:
         model = Advertisement
-        fields = ('created_at',)        
+        fields = ('created_at',"status")        

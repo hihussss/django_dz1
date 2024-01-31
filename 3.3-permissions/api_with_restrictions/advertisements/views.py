@@ -1,4 +1,4 @@
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from django_filters.rest_framework import DjangoFilterBackend
@@ -12,7 +12,7 @@ class AdvertisementViewSet(ModelViewSet):
     """ViewSet для объявлений."""
     queryset = Advertisement.objects.all()
     serializer_class = AdvertisementSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = [IsAuthenticatedOrReadOnly, IsOwner]
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['creator',]
@@ -20,6 +20,8 @@ class AdvertisementViewSet(ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(creator=self.request.user)
         
+    
+
     
     # TODO: настройте ViewSet, укажите атрибуты для кверисета,
     #   сериализаторов и фильтров
